@@ -1,6 +1,7 @@
 from myapp import create_app
 from myapp.database import db, Message, ChatMessage
 from flask_socketio import emit, join_room, leave_room
+import sys
 
 app, socket = create_app()
 
@@ -68,4 +69,4 @@ def chatting_event(json, methods=["GET", "POST"]):
 
 
 if __name__ == "__main__":
-    socket.run(app, allow_unsafe_werkzeug=True, debug=True)
+    socket.run(app, allow_unsafe_werkzeug=True, debug=True, host='0.0.0.0', port=int(sys.argv[0]))
